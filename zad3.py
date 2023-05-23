@@ -1,7 +1,3 @@
-# W funkcji stwórz słownik gdzie kluczem będzie data i czas a wartością będzie słownik gdzie kluczem będzie
-# poziom logowania, komunikat i user_id jeśli jest
-# # {"2023-05-04 10:30:15": {"level": "INFO, "message": "Received request to process data for user_id=1234", "user_id": 1234}}
-
 log = """2023-05-04 10:30:12 INFO Starting application
 2023-05-04 10:30:14 INFO Connected to database
 2023-05-04 10:30:15 DEBUG Received request to process data for user_id=1234
@@ -33,6 +29,7 @@ def value_in_dict(line):
     else:
         return lvl_dict, msg_dict
 
+    
 def keys_values_in_dict(log):
     master_dict = dict()
     lines = log.split("\n")
@@ -40,4 +37,3 @@ def keys_values_in_dict(log):
         main_key = line[:19]
         master_dict.update({main_key: value_in_dict(line)})
     return master_dict
-print(keys_values_in_dict(log))
